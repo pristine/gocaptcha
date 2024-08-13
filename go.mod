@@ -1,3 +1,3 @@
-module github.com/justhyped/gocaptcha
+module github.com/pristine/gocaptcha
 
 go 1.21

@@ -3,9 +3,10 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/justhyped/gocaptcha"
 	"net/http"
 	"time"
+
+	"github.com/pristine/gocaptcha"
 )
 
 func main() {

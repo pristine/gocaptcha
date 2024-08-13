@@ -10,7 +10,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/justhyped/gocaptcha/internal"
+	"github.com/pristine/gocaptcha/internal"
 )
 
 type TwoCaptcha struct {
