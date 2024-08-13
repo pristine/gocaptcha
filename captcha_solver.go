@@ -26,6 +26,10 @@ func (c *CaptchaSolver) SolveImageCaptcha(ctx context.Context, payload *ImageCap
 	return c.provider.SolveImageCaptcha(ctx, c.settings, payload)
 }
 
+func (c *CaptchaSolver) SolveFunCaptcha(ctx context.Context, payload *FunCaptchaPayload) (ICaptchaResponse, error) {
+	return c.provider.SolveFunCaptcha(ctx, c.settings, payload)
+}
+
 // SolveRecaptchaV2 uses the provider to fetch the solution of a captcha.
 //
 // The function returns ICaptchaResponse that has .Solution(), .ReportBad() and .ReportGood() that can be used
