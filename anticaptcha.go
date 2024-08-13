@@ -123,6 +123,10 @@ func (a *AntiCaptcha) SolveTurnstile(ctx context.Context, settings *Settings, pa
 	return result, nil
 }
 
+func (a *AntiCaptcha) SolveFunCaptcha(ctx context.Context, settings *Settings, payload *FunCaptchaPayload) (ICaptchaResponse, error) {
+	panic("not implemented")
+}
+
 func (a *AntiCaptcha) solveTask(ctx context.Context, settings *Settings, task map[string]any) (*CaptchaResponse, error) {
 	taskId, syncAnswer, err := a.createTask(ctx, settings, task)
 	if err != nil {

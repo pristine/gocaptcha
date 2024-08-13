@@ -5,11 +5,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/justhyped/gocaptcha/internal"
 	"io"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/justhyped/gocaptcha/internal"
 )
 
 type TwoCaptcha struct {
@@ -120,6 +121,22 @@ func (t *TwoCaptcha) SolveHCaptcha(ctx context.Context, settings *Settings, payl
 func (t *TwoCaptcha) SolveTurnstile(ctx context.Context, settings *Settings, payload *TurnstilePayload) (ICaptchaResponse, error) {
 	task := &url.Values{}
 	task.Set("method", "turnstile")
+	task.Set("sitekey", payload.EndpointKey)
+	task.Set("pageurl", payload.EndpointUrl)
+
+	result, err := t.solveTask(ctx, settings, task)
+	if err != nil {
+		return nil, err
+	}
+
+	result.reportGood = t.report("reportgood", result.taskId, settings)
+	result.reportBad = t.report("reportbad", result.taskId, settings)
+	return result, nil
+}
+
+func (t *TwoCaptcha) SolveFunCaptcha(ctx context.Context, settings *Settings, payload *FunCaptchaPayload) (ICaptchaResponse, error) {
+	task := &url.Values{}
+	task.Set("method", "funcaptcha")
 	task.Set("sitekey", payload.EndpointKey)
 	task.Set("pageurl", payload.EndpointUrl)
 

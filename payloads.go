@@ -59,3 +59,12 @@ type HCaptchaPayload struct {
 	// Can be found on the Endpoint URL page
 	EndpointKey string
 }
+
+type FunCaptchaPayload struct {
+	// EndpointUrl is the endpoint that has FunCaptcha Protection
+	EndpointUrl string
+
+	// EndpointKey is the FunCaptcha Key
+	// Can be found on the Endpoint URL page
+	EndpointKey string
+}
