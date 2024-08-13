@@ -137,7 +137,7 @@ func (t *TwoCaptcha) SolveTurnstile(ctx context.Context, settings *Settings, pay
 func (t *TwoCaptcha) SolveFunCaptcha(ctx context.Context, settings *Settings, payload *FunCaptchaPayload) (ICaptchaResponse, error) {
 	task := &url.Values{}
 	task.Set("method", "funcaptcha")
-	task.Set("sitekey", payload.EndpointKey)
+	task.Set("publickey", payload.EndpointKey)
 	task.Set("pageurl", payload.EndpointUrl)
 
 	result, err := t.solveTask(ctx, settings, task)
