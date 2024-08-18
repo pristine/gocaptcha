@@ -129,7 +129,7 @@ func (t *EzCaptcha) createTask(ctx context.Context, settings *Settings, payload 
 	}
 
 	if jsonResp.ErrorId == 1 {
-		return "", fmt.Errorf("%v: %v", jsonResp.ErrorId, jsonResp.ErrorDescription)
+		return "", fmt.Errorf("%v: %v", jsonResp.ErrorCode, jsonResp.ErrorDescription)
 	}
 
 	return jsonResp.TaskId, nil
@@ -178,7 +178,7 @@ func (t *EzCaptcha) getResult(ctx context.Context, settings *Settings, taskId st
 	}
 
 	if jsonResp.ErrorId == 1 {
-		return "", fmt.Errorf("%v: %v", jsonResp.ErrorId, jsonResp.ErrorDescription)
+		return "", fmt.Errorf("%v: %v", jsonResp.ErrorCode, jsonResp.ErrorDescription)
 	}
 
 	if jsonResp.Status != "ready" {
